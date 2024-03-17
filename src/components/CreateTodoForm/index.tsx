@@ -1,8 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../Input";
 import { TextArea } from "../Textarea";
-import { useContext } from "react";
-import { TodoContext } from "../../providers/TodoContext";
+import { useTodoStore } from "../../stores/todo/useTodoStore";
 
 interface ICreateTodoFormValues {
    title: string;
@@ -10,7 +9,7 @@ interface ICreateTodoFormValues {
 }
 
 export const CreateTodoForm = () => {
-   const { addTodo } = useContext(TodoContext);
+   const addTodo = useTodoStore(state => state.addTodo);
 
    const {
       register,

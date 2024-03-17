@@ -1,13 +1,12 @@
-import { useContext } from "react";
 import { ITodo } from "../../../interfaces/todo.interface";
-import { TodoContext } from "../../../providers/TodoContext";
+import { useTodoStore } from "../../../stores/todo/useTodoStore";
 
 interface ITodoCardProps {
    todo: ITodo;
 }
 
 export const TodoCard = ({ todo }: ITodoCardProps) => {
-   const { removeTodo } = useContext(TodoContext);
+   const removeTodo = useTodoStore(state => state.removeTodo)
 
    const handleRemove = () => {
       if (confirm("Quer mesmo remover está nota?")) removeTodo(todo.id);

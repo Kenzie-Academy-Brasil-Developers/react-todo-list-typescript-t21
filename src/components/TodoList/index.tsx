@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { TodoContext } from "../../providers/TodoContext";
 import { TodoCard } from "./TodoCard";
+import { useTodoStore } from "../../stores/todo/useTodoStore";
 
 export const TodoList = () => {
-   const { todoList } = useContext(TodoContext);
+   const todoList = useTodoStore(state => state.todoList);
 
    return todoList.length > 0 ? (
       <ul>
